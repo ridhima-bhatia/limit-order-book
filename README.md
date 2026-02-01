@@ -1,7 +1,8 @@
 ## Limit Order Book & Matching Engine (C++)
 
 ### Overview
-This project implements the core logic of a trading exchange by maintaining a limit order book and matching buy and sell limit orders using price–time priority. It supports partial order fills and efficient real-time order matching.
+This project implements the core logic of a trading exchange by maintaining a limit order book and matching buy and sell limit orders using price–time priority.  
+The matching engine is implemented independently of the input interface; a lightweight CLI is provided to simulate order flow.
 
 
 
@@ -12,10 +13,11 @@ This project implements the core logic of a trading exchange by maintaining a li
 - Efficient order matching using ordered data structures
 
 
+
 ### Design Decisions
-- **Price Priority:** Implemented using ordered maps to always access the best available price in O(1) time.
+- **Price Priority:** Implemented using ordered maps to always access the best available price.
 - **Time Priority:** FIFO queues are used at each price level to ensure fair execution of orders.
-- **Efficiency:** Matching logic ensures logarithmic time complexity for price-level operations.
+- **Efficiency:** Logarithmic-time price level access with clean matching logic.
 
 
 
@@ -28,5 +30,5 @@ This project implements the core logic of a trading exchange by maintaining a li
 
 ### How to Run
 ```bash
-g++ order_book.cpp -o order_book
+g++ limit_order_book.cpp -o order_book
 ./order_book
